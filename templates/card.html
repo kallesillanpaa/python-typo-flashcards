@@ -7,12 +7,6 @@
     <title>Card Details</title>
 </head>
 <body>
-    {% if index > 0 %}
-        <p>Indeksi > 0</p>
-    {% else %}
-        <p>Else Blockkiin tultiin</p>
-    {% endif %}
-
     <h1>Flash Card</h1>
     <p>
         <a href="{{ url_for('welcome') }}">
@@ -22,13 +16,19 @@
     Question: {{ flashcard.question }}
     <br>
     Answer: {{ flashcard.answer }}
-    <br>
-    <p>
-        <button>
-            <a href="{{ url_for('card_view', index = index + 1) }}">
-                Next Card
-            </a>
-        </button>
-    </p>
+    <br>  
+        <p>
+            <button>                
+                {% if index < max_index %}
+                <a href="{{ url_for('card_view', index = index + 1) }}">
+                    Next Card
+                </a>
+                {% else %}
+                <a href="{{ url_for('card_view', index = 0) }}">
+                    Start Over
+                </a>
+                {% endif %}
+            </button>
+        </p>        
 </body>
 </html>

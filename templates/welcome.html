@@ -7,6 +7,12 @@
     <title>Welcome</title>
 </head>
 <body>
-    Welcome
+    <h1>Welcome to Flash Cards!</h1>
+   
+        {% for card in cards %}        
+            <a href="{{ url_for('card_view',index=loop.index0) }}">{{ card.question }}</a>
+            <br>
+        {% endfor %}
+        
 </body>
 </html>
