@@ -1,0 +1,36 @@
+1) 
+-Lisää card.html -sivulle linkki welcome.html-sivulle
+käyttäen jinjan url_for:ia.
+
+2)
+- Luo card_view-funktiossa max_index -niminen muuttuja, ja välitä se 
+  parametrina card.html -sivulle. max_index kertoo indeksien määrän db:ssä.
+- Tee card.html -sivulle if:llä tarkistus, voidaanko seuraavaa korttia 
+  näyttää (onko sitä olemassa?)
+  Mikäli on; näytetään seuraavan kortin linkki. 
+  Mikäli taas ei; näytetään linkki ensimmäiseen korttiin, 
+  laita tekstiksi vaikka "Start Over".
+
+3) Näytä welcome.html -sivulla kaikki kysymykset allekkain linkkeinä
+    kyseiseen korttiin käyttäen 
+    {% for card in cards %} (jinjan for-loop -syntaksi)
+    {% endfor %}. Mieti miten välität cards:iin kaikki tiedot.
+   Laita index = loop.index0 //löytyy myös index, joka alkaa indeksistä 1.
+
+   //jos json-tiedostossa olisi index määritelty (kuten question),
+   voisimme käyttää card.index. Nyt voimme käyttää jinjan sisäänrakennettua
+   loop.index0 -funktiota.
+   
+
+4) Luo delete_card.html -sivu sekä reititys /delete_card(index)
+
+  Tee reitissä tarkistus onko request method POST vai GET, jos method on POST, niin
+  poista kyseinen kortti esim. db.remove(card) tai del db[index].
+
+  Tämän jälkeen tee POST-metodissa uudelleenohjaus welcome-sivulle.
+
+  GET-metodissa taasen näytetään delete_card.html sivu, jossa näytetään kysymys sekä 
+  vastaus ja submit-nappi "Yes, delete" sekä Cancel-linkki (käytä url_for:ia).
+  
+  Jos saat tehtyä, lisää card.html -sivun loppuun linkki tai nappi, delete_card-sivulle
+  sekä welcome-sivulle add_card-linkki (tai nappi.)
